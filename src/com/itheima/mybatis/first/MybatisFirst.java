@@ -56,14 +56,17 @@ public class MybatisFirst {
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		//调用sqlsession的增删改查
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//创建一个user对象
 		User user = new User();
-		
+		//设置user的username属性
 		user.setUsername("longlong");
+		//设置user的地址
 		user.setAddress("aab");
 		sqlSession.insert("test.insertUser", user);
-		
+		//提交事务
 		sqlSession.commit();
-		
+		//关闭资源
 		sqlSession.close();
 	}
+	
 }
